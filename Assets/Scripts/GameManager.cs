@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public PlayerSnake Player;
+    [SerializeField] private PlayerSnake Player;
     public GameObject ComidaPrefab;
 
     [SerializeField] private Vector2 limites;

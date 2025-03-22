@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 public class PlayerSnake : MonoBehaviour
 {
     [SerializeField] private float velocity;
-    private Vector2 direction;
-    private int health = 1;
-    public ScoreManager scoreManager;
+    [SerializeField] private Vector2 direction;
+    public int health = 1;
+    [SerializeField] private ScoreManager scoreManager;
 
     private void Start()
     {
@@ -30,6 +30,19 @@ public class PlayerSnake : MonoBehaviour
     {
         transform.Translate(direction * velocity * Time.deltaTime);
     }
+    private void CheckMovement(Collider other)
+    {
+        if (other.CompareTag("Food"))
+        {
+            scoreManager.UpdateScore();
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Wall"))
+        {
+            health = 0;
+            Debug.Log("Game Over");
+        }
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -43,15 +56,6 @@ public class PlayerSnake : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Food"))
-        {
-            scoreManager.UpdateScore();
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("Wall"))
-        {
-            health = 0;
-            Debug.Log("Game Over");
-        }
+        CheckMovement(other);
     }
 }
