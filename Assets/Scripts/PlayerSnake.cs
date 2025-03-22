@@ -7,7 +7,7 @@ public class PlayerSnake : MonoBehaviour
     [SerializeField] private float velocity;
     [SerializeField] private Vector2 direction;
     private int health = 1;
-    //public ScoreManager scoreManager;
+    public ScoreManager scoreManager;
 
     private void Update()
     {
@@ -35,7 +35,7 @@ public class PlayerSnake : MonoBehaviour
     {
         if (other.CompareTag("Food"))
         {
-            //scoreManager.UpdateScore();
+            scoreManager.UpdateScore();
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("Walls"))
