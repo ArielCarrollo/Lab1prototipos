@@ -4,28 +4,24 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] private int ActualScore { get; set; }
-    [SerializeField] private int HighScore { get; set; }
+    [SerializeField] private ScoreData scoreData;
     public GameManager gameManager;
 
     private void Start()
     {
-        HighScore = PlayerPrefs.GetInt("HighScore", 0);
-        ActualScore = 0;
-        UI_Manager.Instance.UpdateText(ActualScore);
+        scoreData.LoadHighScore();
+        scoreData.ResetScore();
+        UI_Manager.Instance.UpdateText(scoreData.ActualScore);
     }
 
     public void UpdateScore()
     {
-        ActualScore++;
-        UI_Manager.Instance.UpdateText(ActualScore);
+        scoreData.ActualScore++;
+        UI_Manager.Instance.UpdateText(scoreData.ActualScore);
 
-        if (ActualScore > HighScore)
-        {
-            HighScore = ActualScore;
-            PlayerPrefs.SetInt("HighScore", HighScore);
-        }
+        scoreData.UpdateHighScore();
 
         gameManager.GenerarComida();
     }
 }
+

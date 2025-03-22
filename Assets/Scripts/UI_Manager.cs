@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; 
+using TMPro;
+
 public class UI_Manager : MonoBehaviour
 {
     public static UI_Manager Instance;
 
-    public TMP_Text ActualScoreText; 
-    public TMP_Text HighScoreText; 
+    public TMP_Text ActualScoreText;
+    public TMP_Text HighScoreText;
+    [SerializeField] private ScoreData scoreData;
 
     private void Awake()
     {
@@ -25,6 +27,6 @@ public class UI_Manager : MonoBehaviour
     public void UpdateText(int actualScore)
     {
         ActualScoreText.text = "Score: " + actualScore;
-        HighScoreText.text = "High Score: " + PlayerPrefs.GetInt("HighScore", 0);
+        HighScoreText.text = "High Score: " + scoreData.HighScore;
     }
 }
