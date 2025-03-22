@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    // Atributos públicos
-    public int ActualScore { get; private set; }
-    public int HighScore { get; private set; }
+    [SerializeField] private int ActualScore { get; set; }
+    [SerializeField] private int HighScore { get; set; }
     public GameManager gameManager;
 
     private void Start()
@@ -16,7 +15,6 @@ public class ScoreManager : MonoBehaviour
         UI_Manager.Instance.UpdateText(ActualScore);
     }
 
-    // Método público: Actualiza el puntaje y genera nueva comida
     public void UpdateScore()
     {
         ActualScore++;

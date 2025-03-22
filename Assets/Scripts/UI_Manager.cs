@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro; 
 public class UI_Manager : MonoBehaviour
 {
-    // Singleton
     public static UI_Manager Instance;
 
-    // Atributos públicos
-    public Text ActualScoreText;
-    public Text HighScoreText;
+    public TMP_Text ActualScoreText; 
+    public TMP_Text HighScoreText; 
 
     private void Awake()
     {
@@ -24,7 +22,6 @@ public class UI_Manager : MonoBehaviour
         }
     }
 
-    // Método público: Actualiza los textos de la interfaz
     public void UpdateText(int actualScore)
     {
         ActualScoreText.text = "Score: " + actualScore;

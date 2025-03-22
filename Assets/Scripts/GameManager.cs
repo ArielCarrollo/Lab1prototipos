@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Atributos públicos
     public PlayerSnake Player;
     public GameObject ComidaPrefab;
 
-    // Atributos privados
     [SerializeField] private Vector2 limites;
     [SerializeField] private int MaxScore;
 
@@ -16,8 +14,6 @@ public class GameManager : MonoBehaviour
     {
         GenerarComida();
     }
-
-    // Método público: Genera comida aleatoriamente dentro de los límites
     public void GenerarComida()
     {
         float x = Random.Range(-limites.x, limites.x);
