@@ -5,7 +5,6 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private ScoreData scoreData;
-    public GameManager gameManager;
 
     private void Start()
     {
@@ -20,8 +19,6 @@ public class ScoreManager : MonoBehaviour
         UI_Manager.Instance.UpdateText(scoreData.ActualScore);
 
         scoreData.UpdateHighScore();
-
-        gameManager.GenerarComida();
     }
 }
 

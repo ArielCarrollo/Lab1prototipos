@@ -7,8 +7,10 @@ public class PlayerSnake : MonoBehaviour
 {
     [SerializeField] private float velocity;
     [SerializeField] private Vector2 direction;
+    [SerializeField] public GameManager gameManager;
     public int health = 1;
     [SerializeField] private ScoreManager scoreManager;
+    private bool Death = false;
 
     private void Start()
     {
@@ -36,11 +38,14 @@ public class PlayerSnake : MonoBehaviour
         {
             scoreManager.UpdateScore();
             Destroy(other.gameObject);
+            gameManager.GenerarComida();
         }
         else if (other.CompareTag("Wall"))
         {
             health = 0;
             Debug.Log("Game Over");
+            Death = true;
+            UI_Manager.Instance.DeathScreen(Death);
         }
     }
 

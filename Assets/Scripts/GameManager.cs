@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private PlayerSnake Player;
     public GameObject ComidaPrefab;
-
     [SerializeField] private Vector2 limites;
-    [SerializeField] private int MaxScore;
 
     private void Start()
     {
